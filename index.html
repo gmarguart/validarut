@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Validador de RUT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Rol Único Tributario · Chile</span>
+    <h1>Validador de RUT</h1>
+    <p class="lede">Escribe un RUT con o sin puntos y guion. La página calcula el dígito verificador con el algoritmo módulo 11 y te muestra cada paso del cálculo.</p>
+  </header>
+
+  <form class="card" id="form" novalidate>
+    <label for="rut">RUT a validar</label>
+    <div class="field">
+      <input id="rut" name="rut" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="12" value="12.345.678-5" placeholder="12.345.678-5" aria-describedby="status">
+      <button class="btn" type="button" id="clear">Limpiar</button>
+    </div>
+    <div class="status" id="status" role="status" aria-live="polite">
+      <span class="pill" id="pill">—</span>
+      <span id="msg">Ingresa un RUT</span>
+    </div>
+    <p class="hint">Ejemplos para probar:</p>
+    <div class="examples">
+      <button type="button" class="chip" data-rut="12.345.678-5">12.345.678-5</button>
+      <button type="button" class="chip" data-rut="11.111.111-1">11.111.111-1</button>
+      <button type="button" class="chip" data-rut="9.876.543-3">9.876.543-3</button>
+      <button type="button" class="chip" data-rut="7.654.321-6">7.654.321-6</button>
+      <button type="button" class="chip" data-rut="12.345.678-9">12.345.678-9</button>
+    </div>
+  </form>
+
+  <section class="card calc" aria-labelledby="calc-title">
+    <h2 id="calc-title">Cálculo paso a paso</h2>
+    <p class="hint">Los dígitos del cuerpo se recorren de derecha a izquierda y se multiplican por la serie 2, 3, 4, 5, 6, 7, que se repite.</p>
+    <div class="table-scroll">
+      <table id="table" aria-label="Multiplicación de dígitos por factores"></table>
+    </div>
+    <ul class="steps" id="steps"></ul>
+  </section>
+
+  <section class="card" aria-labelledby="rules-title">
+    <h2 id="rules-title">Cómo funciona el módulo 11</h2>
+    <ol class="rules">
+      <li>Toma el cuerpo del RUT, sin el dígito verificador.</li>
+      <li>Invierte los dígitos y multiplícalos por <code>2, 3, 4, 5, 6, 7, 2, 3…</code></li>
+      <li>Suma todos los productos y calcula el <strong>resto de dividir por 11</strong>.</li>
+      <li>Resta ese resto a 11: <code>dv = 11 − (suma % 11)</code>.</li>
+      <li>Si el resultado es <strong>11</strong>, el DV es <code>0</code>. Si es <strong>10</strong>, el DV es <code>K</code>. En otro caso, es el número obtenido.</li>
+    </ol>
+  </section>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
