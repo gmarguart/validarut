@@ -20,7 +20,7 @@
   <form class="card" id="form" novalidate>
     <label for="rut">RUT a validar</label>
     <div class="field">
-      <input id="rut" name="rut" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="12" value="12.345.678-5" placeholder="12.345.678-5" aria-describedby="status">
+      <input id="rut" name="rut" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="12" value="11.111.111-1" placeholder="11.111.111-1" aria-describedby="status">
       <button class="btn" type="button" id="clear">Limpiar</button>
     </div>
     <div class="status" id="status" role="status" aria-live="polite">
@@ -29,11 +29,8 @@
     </div>
     <p class="hint">Ejemplos para probar:</p>
     <div class="examples">
-      <button type="button" class="chip" data-rut="12.345.678-5">12.345.678-5</button>
-      <button type="button" class="chip" data-rut="11.111.111-1">11.111.111-1</button>
-      <button type="button" class="chip" data-rut="9.876.543-3">9.876.543-3</button>
-      <button type="button" class="chip" data-rut="7.654.321-6">7.654.321-6</button>
-      <button type="button" class="chip" data-rut="12.345.678-9">12.345.678-9</button>
+      <button type="button" class="chip" data-rut="11.111.111-1">11.111.111-1 (válido)</button>
+      <button type="button" class="chip" data-rut="11.111.111-K">11.111.111-K (inválido)</button>
     </div>
   </form>
 
